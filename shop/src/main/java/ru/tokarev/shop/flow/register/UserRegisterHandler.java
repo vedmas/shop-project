@@ -61,7 +61,7 @@ public class UserRegisterHandler {
 
             return FAILURE;
         }
-        else if(basicUserInfo.getPassword().length() < 9 || basicUserInfo.getPassword().length() > 20) {
+        else if(basicUserInfo.getPassword().length() < 8 || basicUserInfo.getPassword().length() > 20) {
             error.addMessage(new MessageBuilder()
                     .error()
                     .source("confirmPassword")
