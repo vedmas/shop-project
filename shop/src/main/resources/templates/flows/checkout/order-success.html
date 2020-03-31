@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+	<body>
+		<!-- HEADER -->
+		<header th:replace="fragments/header :: header"></header>
+		<!-- /HEADER -->
+
+		<!-- NAVIGATION -->
+		<nav th:replace="fragments/header :: navigation"></nav>
+		<!-- /NAVIGATION -->
+
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Checkout</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="#">Home</a></li>
+							<li class="active">Checkout</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-7">
+						<!-- Billing Details -->
+						<div class="billing-details">
+							<div class="section-title">
+								<h3 class="title">Billing address</h3>
+							</div>
+							<h1>Order success!!!</h1>
+						</div>
+						<!-- /Billing Details -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- NEWSLETTER -->
+		<div th:replace="fragments/footer :: newsletter"></div>
+		<!-- /NEWSLETTER -->
+
+		<!-- FOOTER -->
+		<footer th:replace="fragments/footer :: footer"></footer>
+		<!-- /FOOTER -->
+
+		<!-- jQuery Plugins -->
+		<script th:replace="fragments/footer :: scripts"></script>
+
+	</body>
+</html>
