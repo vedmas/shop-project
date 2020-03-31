@@ -61,6 +61,15 @@ public class UserRegisterHandler {
 
             return FAILURE;
         }
+        else if(basicUserInfo.getPassword().length() < 9 || basicUserInfo.getPassword().length() > 20) {
+            error.addMessage(new MessageBuilder()
+                    .error()
+                    .source("confirmPassword")
+                    .defaultText("The password must be at least 8 and no more than 20 characters!")
+                    .build());
+
+            return FAILURE;
+        }
         return SUCCESS;
     }
 

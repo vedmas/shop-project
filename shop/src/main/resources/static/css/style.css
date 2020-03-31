@@ -439,6 +439,10 @@ textarea.input {
   margin-right: 5px;
 }
 
+.error-num-phone{
+  color: red;
+}
+
 /*----------------------------*\
 	Logo
 \*----------------------------*/

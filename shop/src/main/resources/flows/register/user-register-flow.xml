@@ -7,12 +7,12 @@
     <var name="basicInfo" class="ru.tokarev.shop.flow.register.BasicUserInfo" />
     <var name="personalInfo" class="ru.tokarev.shop.flow.register.PersonalUserInfo" />
 
-    <input name="email" required="true"/>
+    <input name="numberPhone" required="true"/>
 
     <on-start>
         <evaluate expression="userRegisterHandler.init()"
                   result="flowScope.userRegisterModel" />
-        <evaluate expression="basicInfo.email = email" />
+        <evaluate expression="basicInfo.numberPhone = numberPhone" />
     </on-start>
 
     <view-state id="basic" view="flows/register/new-user-basic" model="basicInfo">
