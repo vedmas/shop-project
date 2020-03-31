@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="admin/fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<th:block th:if="${error}">
+    <div th:replace="admin/fragments/header :: alert"></div>
+</th:block>
+
+<div th:replace="admin/fragments/header :: header"></div>
+
+<div class="d-flex">
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <h2 class="mb-4" th:if="${edit}">Edit product</h2>
+        <h2 class="mb-4" th:if="${create}">Create product</h2>
+
+        <form th:object="${producer}" method="post" th:action="@{/admin/producer}" enctype="multipart/form-data">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <input th:type="hidden" th:field="*{id}">
+                    <div class="form-group">
+                        <label for="name">Producer name</label>
+                        <input th:field="*{nameProducer}" type="text" class="form-control" id="name"
+                               placeholder="Enter product name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Region</label>
+                        <input th:field="*{region}" type="text" class="form-control" id="price"
+                               placeholder="Enter product price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Country</label>
+                        <input th:field="*{country}" type="text" class="form-control" id="price"
+                               placeholder="Enter product price" required>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script th:replace="admin/fragments/footer :: scripts"></script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="admin/fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<div th:replace="admin/fragments/header :: header"></div>
+
+<div class="d-flex">
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <h2 class="mb-4" th:if="${edit}" >Edit user</h2>
+        <h2 class="mb-4" th:if="${create}" >Create user</h2>
+
+        <form th:object="${user}" method="post" th:action="@{/admin/user}">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <input th:type="hidden" th:field="*{id}">
+                    <div class="form-group">
+                        <label for="user_first_name">User First name</label>
+                        <input th:field="*{firstUserName}" type="text" class="form-control" id="user_first_name" placeholder="Enter user name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_last_name">User Last name</label>
+                        <input th:field="*{lastUserName}" type="text" class="form-control" id="user_last_name" placeholder="Enter user name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="number_phone">User Number Phone</label>
+                        <input th:field="*{numberPhone}" type="text" class="form-control" id="number_phone" placeholder="Enter user name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input th:field="*{password}" type="password" class="form-control" id="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input th:field="*{email}" type="text" class="form-control" id="email" placeholder="Enter user email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select multiple class="form-control" id="gender" th:field="*{gender}" required>
+                            <option th:each="gender : ${genders}"
+                                    th:text="${gender.getNameGender()}"
+                                    th:value="${gender.getId()}"
+                                    th:selected="${user.getGender()}"
+                            ></option>
+                        </select>
+<!--                        <input th:field="*{gender.nameGender}" type="text" class="form-control" id="gender" placeholder="Enter user first name">-->
+                    </div>
+                    <div class="form-group">
+                        <label for="roles">User roles</label>
+                        <select multiple class="form-control" id="roles" th:field="*{roles}" required>
+                            <option th:each="role : ${roles}"
+                                    th:text="${role.getNameRole()}"
+                                    th:value="${role.id}"
+                                    th:selected="${user.getRoles().contains(role)}"
+                            ></option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+        </form>
+    </div>
+</div>
+
+<script th:replace="admin/fragments/footer :: scripts"></script>
+
+</body>
+</html>

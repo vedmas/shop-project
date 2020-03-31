@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="admin/fragments/header :: head"></head>
+
+<body class="bg-light">
+<div th:replace="admin/fragments/header :: header"></div>
+<div class="d-flex">
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+<!--1-->
+    <div class="content p-4">
+        <h2 class="mb-4">Admin chat</h2>
+
+        <div id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body message-list">
+                        <ul class="chat">
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="input-group">
+                            <input id="message-text" type="text" class="form-control input-sm"
+                                   placeholder="Type your message here..."/>
+                            <span class="input-group-btn">
+                        <button class="btn btn-warning btn-sm" id="btn-send">Send</button>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
+<script th:replace="admin/fragments/footer :: scripts"></script>
+</body>
+</html>
