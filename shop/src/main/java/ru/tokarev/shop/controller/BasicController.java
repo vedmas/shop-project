@@ -51,16 +51,20 @@ public class BasicController {
         return "index";
     }
     @GetMapping("/login")
-    String loginPage(SignupForm signupForm) {
+    String loginPage(SignupForm signupForm, Model model) {
         return "login";
     }
 
     @PostMapping("/signup")
-    public String signup(@Valid SignupForm signupForm, BindingResult bindingResult, RedirectAttributes attributes) {
+    public String signup(@Valid SignupForm signupForm, BindingResult bindingResult, RedirectAttributes attributes, Model model) {
         if (bindingResult.hasErrors()) {
             return "login";
         }
-        attributes.addAttribute("email", signupForm.getEmail());
+        if(signupForm.getNumberPhone().length() < 5) {
+            model.addAttribute("error_numPhone", true);
+            return "login";
+        }
+        attributes.addAttribute("numberPhone", signupForm.getNumberPhone());
         return "redirect:/register";
     }
 

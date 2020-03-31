@@ -49,9 +49,12 @@
 								<h3 class="title">Register</h3>
 							</div>
 							<div class="form-group">
-								<input class="input" type="email" th:field="*{email}" placeholder="Email address">
-								<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+								<input class="input" type="text" th:field="*{numberPhone}" placeholder="Number Phone">
+								<small class="form-text text-danger" th:if="${#fields.hasErrors('numberPhone')}" th:errors="*{numberPhone}"></small>
 							</div>
+							<th:block th:if="${error_numPhone}">
+								<h6 class="error-num-phone">The phone number cannot be less than 6 characters</h6>
+							</th:block>
 							<div class="form-group">
 								<button class="primary-btn order-submit" type="submit" name="submit">Register</button>
 							</div>

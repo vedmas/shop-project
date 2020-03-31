@@ -5,11 +5,11 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = EmailNotRegisteredValidator.class)
+@Constraint(validatedBy = NumberPhoneNotRegisteredValidator.class)
 @Target( { ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EmailNotRegistered {
-    String message() default "User with this email already registered";
+public @interface NumberPhoneNotRegistered {
+    String message() default "User with this number phone already registered";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
