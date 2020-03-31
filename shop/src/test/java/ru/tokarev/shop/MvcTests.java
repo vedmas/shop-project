@@ -53,7 +53,7 @@ public class MvcTests {
         mockMvc.perform(formLogin("/authenticateTheUser").user("1111").password("1111"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/"));
+                .andExpect(redirectedUrl("/login?error"));
     }
 
     @Test
