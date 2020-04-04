@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.tokarev.shop.controller.repr.SignupForm;
 import ru.tokarev.shop.service.cart.CartService;
-import ru.tokarev.shop.service.order.OrderService;
-import ru.tokarev.shop.service.ordersProducts.OrdersProductsService;
 import ru.tokarev.shop.service.product.ProductService;
 import ru.tokarev.shop.service.repr.ProductInfo;
 
@@ -30,17 +28,11 @@ public class BasicController {
 
     private CartService cartService;
 
-    private OrderService orderService;
-
-    private OrdersProductsService ordersProductsService;
-
 
     @Autowired
-    public BasicController(ProductService productService, CartService cartService, OrderService orderService, OrdersProductsService ordersProductsService) {
+    public BasicController(ProductService productService, CartService cartService) {
         this.productService = productService;
         this.cartService = cartService;
-        this.orderService = orderService;
-        this.ordersProductsService = ordersProductsService;
     }
 
     @GetMapping("/")

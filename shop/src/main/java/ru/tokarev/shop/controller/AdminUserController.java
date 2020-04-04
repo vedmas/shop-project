@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.tokarev.shop.repository.GenderRepository;
-import ru.tokarev.shop.repository.RoleRepository;
 import ru.tokarev.shop.repository.entity.Gender;
 import ru.tokarev.shop.repository.entity.Roles;
 import ru.tokarev.shop.repository.entity.Users;
@@ -25,14 +23,18 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminUserController {
 
-    @Autowired
     private UserService userService;
 
-    @Autowired
     private RoleService roleService;
 
-    @Autowired
     private GenderService genderService;
+
+    @Autowired
+    public AdminUserController(UserService userService, RoleService roleService, GenderService genderService) {
+        this.userService = userService;
+        this.roleService = roleService;
+        this.genderService = genderService;
+    }
 
     @GetMapping("")
     public String adminPage(Model model) {

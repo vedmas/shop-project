@@ -14,6 +14,7 @@ import java.util.Set;
 public class OrderRepr implements Serializable {
 
     private static final long serialVersionUID = -761768335608051934L;
+
     private Long id;
 
     private Users user;

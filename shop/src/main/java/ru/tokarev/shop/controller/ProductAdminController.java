@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.tokarev.shop.controller.repr.ProductRepr;
 import ru.tokarev.shop.repository.CategoryRepository;
 import ru.tokarev.shop.repository.entity.Products;
+import ru.tokarev.shop.service.category.CategoryService;
 import ru.tokarev.shop.service.producer.ProducerService;
 import ru.tokarev.shop.service.product.ProductService;
 
@@ -21,14 +22,18 @@ import java.util.List;
 @RequestMapping("/admin")
 public class ProductAdminController {
 
-    @Autowired
     private ProductService productService;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
+
+    private ProducerService producerService;
 
     @Autowired
-    private ProducerService producerService;
+    public ProductAdminController(ProductService productService, CategoryService categoryService, ProducerService producerService) {
+        this.productService = productService;
+        this.categoryService = categoryService;
+        this.producerService = producerService;
+    }
 
     @GetMapping("/products")
     public String productsPage(Model model) {
@@ -43,7 +48,7 @@ public class ProductAdminController {
         model.addAttribute("create", true);
         model.addAttribute("activePage", "Products");
         model.addAttribute("product", new ProductRepr());
-        model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("producers", producerService.findAll());
         return "admin/product_form";
     }
@@ -68,7 +73,7 @@ public class ProductAdminController {
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Products");
         model.addAttribute("product", productService.get(id));
-        model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("producers", producerService.findAll());
         return "admin/product_form";
     }

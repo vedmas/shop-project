@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class CategoryRepr implements Serializable {
 
     private static final long serialVersionUID = -1583878940958610954L;
+
     private Long id;
 
     @NonNull
