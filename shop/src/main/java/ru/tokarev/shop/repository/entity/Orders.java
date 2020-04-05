@@ -1,6 +1,7 @@
 package ru.tokarev.shop.repository.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
+//@EqualsAndHashCode (onlyExplicitlyIncluded = true)
 public class Orders implements Serializable {
 
     private static final long serialVersionUID = -4228853601167371657L;
@@ -35,15 +37,6 @@ public class Orders implements Serializable {
 
     @Column(name = "zip_code")
     private String zipCode;
-
-
-//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "orders_products",
-//    joinColumns = @JoinColumn(name = "orders_id"),
-//    inverseJoinColumns = @JoinColumn(name = "products_id"))
-
-//    private Set<Products> productsList;
 
     @OneToMany(mappedBy = "orders")
     private Set<OrdersProducts> orderProductsList;

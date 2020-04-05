@@ -14,9 +14,12 @@ import java.util.Optional;
 @Controller
 public class ImageController {
 
-    @Autowired
     private PictureRepository pictureRepository;
 
+    @Autowired
+    public ImageController(PictureRepository pictureRepository) {
+        this.pictureRepository = pictureRepository;
+    }
 
     @GetMapping("/picture/{pictureID}")
     public void downloadProductImage(@PathVariable("pictureID") Long pictureId, HttpServletResponse response) throws IOException {

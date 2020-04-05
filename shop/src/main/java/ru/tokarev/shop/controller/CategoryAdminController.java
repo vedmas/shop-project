@@ -19,8 +19,13 @@ import java.util.List;
 @RequestMapping("/admin")
 public class CategoryAdminController {
 
-    @Autowired
+
     private CategoryService categoryService;
+
+    @Autowired
+    public CategoryAdminController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @GetMapping("/categories")
     public String categoriesPage(Model model) {

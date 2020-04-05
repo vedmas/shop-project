@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class SignupForm implements Serializable {
 
     private static final long serialVersionUID = -469320159103718712L;
+    
     @NotBlank
     @NumberPhoneNotRegistered
     private String numberPhone;

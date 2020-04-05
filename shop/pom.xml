@@ -55,17 +55,17 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.session</groupId>-->
-        <!--			<artifactId>spring-session-data-redis</artifactId>-->
-        <!--		</dependency>-->
+<!--        		<dependency>-->
+<!--        			<groupId>org.springframework.session</groupId>-->
+<!--        			<artifactId>spring-session-data-redis</artifactId>-->
+<!--        		</dependency>-->
 
         <!-- https://mvnrepository.com/artifact/io.lettuce/lettuce-core -->
-        <!--		<dependency>-->
-        <!--			<groupId>io.lettuce</groupId>-->
-        <!--			<artifactId>lettuce-core</artifactId>-->
-        <!--			<version>5.2.2.RELEASE</version>-->
-        <!--		</dependency>-->
+<!--        		<dependency>-->
+<!--        			<groupId>io.lettuce</groupId>-->
+<!--        			<artifactId>lettuce-core</artifactId>-->
+<!--        			<version>5.2.2.RELEASE</version>-->
+<!--        		</dependency>-->
 
         <dependency>
             <groupId>org.springframework.webflow</groupId>

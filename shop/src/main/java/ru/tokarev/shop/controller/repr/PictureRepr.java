@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class PictureRepr implements Serializable {
 
     private static final long serialVersionUID = -9018201549774873537L;
+
     private Long id;
 
     private String name;

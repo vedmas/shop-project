@@ -33,16 +33,6 @@ public class ProductRepr implements Serializable {
 
     private MultipartFile[] newPictures;
 
-//    public ProductRepr(Long id, String nameProduct, Category category, Producers producer, long price, byte discount, Set<PictureRepr> pictures) {
-//        this.id = id;
-//        this.nameProduct = nameProduct;
-//        this.category = category;
-//        this.producer = producer;
-//        this.price = price;
-//        this.discount = discount;
-//        this.pictures = pictures;
-//    }
-
     public ProductRepr(Products products) {
         this.id = products.getId();
         this.nameProduct = products.getNameProduct();
