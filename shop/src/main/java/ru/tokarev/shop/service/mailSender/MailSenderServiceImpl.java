@@ -52,7 +52,6 @@ public class MailSenderServiceImpl implements MailSendService {
         this.mailSender.send(message);
     }
 
-
     //Отправка обычных сообщений
     @Override
     public void sendMail(String userEmail, String topicMessage, String textMessage) {

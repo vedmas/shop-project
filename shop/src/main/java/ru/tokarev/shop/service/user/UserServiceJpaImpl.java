@@ -1,5 +1,6 @@
 package ru.tokarev.shop.service.user;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +26,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service("userServices")
+@Slf4j
 public class UserServiceJpaImpl implements UserService {
-
-    private final Logger logger = LoggerFactory.getLogger(UserServiceJpaImpl.class);
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private BCryptPasswordEncoder passwordEncoder;
-
-
     private GenderRepository genderRepository;
 
     @Autowired
@@ -144,7 +142,7 @@ public class UserServiceJpaImpl implements UserService {
                     mapRolesToAuthorities(user.getRoles()));
         }
         catch (Exception e) {
-            logger.info("", e);
+            log.error("Error user authorization!", e);
             throw new BadCredentialsException("Internal error. Try again latter.");
         }
     }

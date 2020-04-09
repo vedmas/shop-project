@@ -17,6 +17,7 @@ import java.util.List;
 public class Picture implements Serializable {
 
     private static final long serialVersionUID = 1871253056427042613L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

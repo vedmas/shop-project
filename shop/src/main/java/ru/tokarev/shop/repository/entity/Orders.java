@@ -17,6 +17,7 @@ import java.util.Set;
 public class Orders implements Serializable {
 
     private static final long serialVersionUID = -4228853601167371657L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

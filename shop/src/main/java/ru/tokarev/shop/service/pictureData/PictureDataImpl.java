@@ -12,6 +12,7 @@ import java.util.List;
 public class PictureDataImpl implements PictureDataService, Serializable {
 
     private static final long serialVersionUID = -1644041855617035847L;
+
     PictureDataRepository pictureDataRepository;
 
     @Autowired

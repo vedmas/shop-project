@@ -1,5 +1,6 @@
 package ru.tokarev.shop.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
+@Slf4j
 public class BasicController {
-
-    private static final Logger logger = LoggerFactory.getLogger(BasicController.class);
 
     private ProductService productService;
 
@@ -96,7 +96,7 @@ public class BasicController {
     @PostMapping("/cart/delete")
     public String deleteCart(Long productId, String urlPath) {
         cartService.delete(productId);
-        logger.info("Product id {} removed.", productId);
+        log.info("Product id {} removed.", productId);
         return "redirect:" + urlPath;
     }
 }

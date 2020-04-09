@@ -14,7 +14,8 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService, Serializable {
 
     private static final long serialVersionUID = -8091847961202201710L;
-    OrderRepository orderRepository;
+
+    private OrderRepository orderRepository;
 
     @Autowired
     public void setOrderRepository(OrderRepository orderRepository) {

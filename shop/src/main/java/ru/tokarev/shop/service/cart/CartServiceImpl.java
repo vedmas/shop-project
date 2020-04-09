@@ -23,13 +23,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CartServiceImpl implements CartService, Serializable {
 
     private static final long serialVersionUID = 5489259139558716438L;
+
     private final List<ProductInfo> cartProducts;
+
+    private ProductService productService;
 
     public CartServiceImpl() {
         cartProducts = new CopyOnWriteArrayList<>();
     }
-
-    private ProductService productService;
 
     @Autowired
     public void setProductService(ProductService productService) {

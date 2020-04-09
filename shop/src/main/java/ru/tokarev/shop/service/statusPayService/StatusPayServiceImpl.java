@@ -12,6 +12,7 @@ import java.util.List;
 public class StatusPayServiceImpl implements StatusPayService, Serializable {
 
     private static final long serialVersionUID = -4102890212102264340L;
+
     private StatusPayRepository statusPayRepository;
 
     @Autowired

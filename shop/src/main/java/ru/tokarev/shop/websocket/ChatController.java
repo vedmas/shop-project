@@ -1,5 +1,6 @@
 package ru.tokarev.shop.websocket;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -11,9 +12,8 @@ import org.springframework.web.util.HtmlUtils;
 
 
 @RestController
+@Slf4j
 public class ChatController {
-
-    private static final Logger logger = LoggerFactory.getLogger(ChatController.class);
 
     private final SimpMessagingTemplate template;
 
@@ -23,8 +23,8 @@ public class ChatController {
 
     @MessageMapping("/send_message")
     @SendTo("/chat_out/receive_message")
-    public ChatMessage messageReceiver(ChatMessage message) throws Exception {
-        logger.info("New chat message {}", message);
+    public ChatMessage messageReceiver(ChatMessage message) {
+        log.info("New chat message {}", message);
         return new ChatMessage("server", "Echo: " + HtmlUtils.htmlEscape(message.getMessage()));
     }
 

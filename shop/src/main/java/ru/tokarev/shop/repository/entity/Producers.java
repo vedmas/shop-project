@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class Producers implements Serializable {
 
     private static final long serialVersionUID = 4447812409953257881L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

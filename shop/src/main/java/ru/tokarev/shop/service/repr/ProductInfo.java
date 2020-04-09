@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 public class ProductInfo implements Serializable {
 
     private static final long serialVersionUID = 267688168102987471L;
+
     private ProductRepr productRepr;
 
     @EqualsAndHashCode.Exclude

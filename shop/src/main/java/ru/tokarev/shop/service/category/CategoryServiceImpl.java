@@ -13,7 +13,8 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService, Serializable {
 
     private static final long serialVersionUID = -8884935989028553790L;
-    CategoryRepository categoryRepository;
+
+    private CategoryRepository categoryRepository;
 
     @Autowired
     public void setCategoryRepository(CategoryRepository categoryRepository) {

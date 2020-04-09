@@ -11,6 +11,7 @@ import java.util.Set;
 public class RoleRepr implements Serializable {
 
     private static final long serialVersionUID = 6766157956786310109L;
+
     private Long id;
 
     @NonNull
