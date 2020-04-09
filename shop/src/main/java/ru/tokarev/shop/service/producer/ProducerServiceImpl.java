@@ -15,6 +15,7 @@ import java.util.List;
 public class ProducerServiceImpl implements ProducerService, Serializable {
 
     private static final long serialVersionUID = -4510798267559404865L;
+
     private ProducerRepository producerRepository;
 
     @Autowired

@@ -14,6 +14,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/mail")
 public class MailController {
+
     @Value("${path.email.page}")
     private String pathEmailPage;
 

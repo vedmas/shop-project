@@ -16,6 +16,7 @@ import java.io.Serializable;
 public class Gender implements Serializable {
 
     private static final long serialVersionUID = -5532190602666172318L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

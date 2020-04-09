@@ -1,5 +1,6 @@
 package ru.tokarev.shop.service.role;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,9 @@ import java.io.Serializable;
 import java.util.List;
 
 @Service("roleService")
+@Slf4j
 public class RoleServiceImpl implements RoleService, Serializable {
 
-    private static final Logger logger = LoggerFactory.getLogger(RoleServiceImpl.class);
     private static final long serialVersionUID = -5255259920835146847L;
 
     private RoleRepository roleRepository;
@@ -40,7 +41,7 @@ public class RoleServiceImpl implements RoleService, Serializable {
         role.setId(roleRepr.getId());
         role.setNameRole(roleRepr.getNameRole());
         roleRepository.save(role);
-        logger.info("Role id {} name {} save or update", role.getId(), role.getNameRole());
+        log.info("Role id {} name {} save or update", role.getId(), role.getNameRole());
     }
 
     @Override

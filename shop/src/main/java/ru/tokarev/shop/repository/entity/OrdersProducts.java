@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class OrdersProducts implements Serializable {
+
     private static final long serialVersionUID = -8071762596040136947L;
 
     @EmbeddedId

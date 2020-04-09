@@ -17,6 +17,7 @@ import java.util.Set;
 public class Products implements Serializable {
 
     private static final long serialVersionUID = -7905811165075556076L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

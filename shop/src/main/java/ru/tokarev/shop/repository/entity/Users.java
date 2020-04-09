@@ -18,6 +18,7 @@ import java.util.Set;
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 3992815266391699894L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -82,7 +83,7 @@ public class Users implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Users users = (Users) o;
-        return id == users.id &&
+        return id.equals(users.id) &&
                 numberPhone.equals(users.numberPhone);
     }
 

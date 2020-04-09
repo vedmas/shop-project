@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 public class ProductRepr implements Serializable {
 
     private static final long serialVersionUID = -168563171109617142L;
+
     private Long id;
 
     private String nameProduct;

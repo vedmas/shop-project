@@ -18,6 +18,7 @@ import java.io.Serializable;
 public class StatusPay implements Serializable {
 
     private static final long serialVersionUID = 7388989823911628671L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

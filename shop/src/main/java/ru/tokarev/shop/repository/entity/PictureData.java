@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class PictureData implements Serializable {
 
     private static final long serialVersionUID = -5989288982878549974L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

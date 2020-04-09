@@ -1,5 +1,6 @@
 package ru.tokarev.shop.service.product;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("productService")
+@Slf4j
 public class ProductServiceImpl implements ProductService, Serializable {
-    private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
+
     private static final long serialVersionUID = -5039352816560595361L;
 
     private ProductRepository productRepository;
@@ -64,7 +66,7 @@ public class ProductServiceImpl implements ProductService, Serializable {
             }
         }
         productRepository.save(product);
-        logger.info("Product id {} name {} save or update", product.getId(), product.getNameProduct());
+        log.info("Product id {} name {} save or update", product.getId(), product.getNameProduct());
     }
 
     @Override

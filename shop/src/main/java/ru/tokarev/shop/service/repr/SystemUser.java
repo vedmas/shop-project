@@ -15,6 +15,7 @@ import java.util.Set;
 public class SystemUser implements Serializable {
 
     private static final long serialVersionUID = -1662124004042085296L;
+
     private Long id;
 
     private String firstUserName;
