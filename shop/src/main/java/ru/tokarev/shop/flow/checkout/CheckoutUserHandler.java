@@ -149,7 +149,7 @@ public class CheckoutUserHandler {
             mailSendService.sendMailHtml(mailInfo);
             cartService.deleteAll();
         } catch (Exception e) {
-            logger.error("", e);
+            logger.error("Error save order", e);
             error.addMessage(new MessageBuilder()
                     .error()
                     .source("email")

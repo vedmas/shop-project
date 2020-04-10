@@ -33,7 +33,7 @@ public class Users implements Serializable {
     @JoinColumn(name = "gender_id", nullable = false)
     private Gender gender;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles", //название таблицы
             joinColumns = @JoinColumn(name = "users_id"), //то, что связываем

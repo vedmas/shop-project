@@ -50,18 +50,21 @@
             </ul>
             <ul class="header-links pull-right">
                 <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                <li sec:authorize="isAnonymous()"><a th:href="@{/login}"><i class="fa fa-user-o"></i>My Account</a>
-                </li>
-                <li sec:authorize="isAuthenticated()">
+<!--                <li sec:authorize="isAnonymous()"><a th:href="@{/login}"><i class="fa fa-user-o"></i>My Account</a></li>-->
+                <li th:unless="${@userService.isUserRegistered()}"><a th:href="@{/login}"><i class="fa fa-user-o"></i>My Account</a></li>
+                <li th:if="${@userService.isUserRegistered()}">
                     <a th:href="@{/profile}"><i class="fa fa-user-o"></i>[[${@userService.authUserInfo().firstUserName}]] profile</a></li>
-                <li sec:authorize="isAuthenticated()">
+                <li th:if="${@userService.isUserRegistered()}">
                     <a href="javascript:document.getElementById('logout').submit()">
                         <i class="fa fa-user-o"></i> Logout
                     </a>
                     <form id="logout" method="post" th:action="@{/logout}"></form>
                 </li>
                 <li>
-                    <a id="chatLink" href="#myModal" data-backdrop="false" data-toggle="modal">Click Me</a>
+                    <a id="chatLink" href="#myModal" data-backdrop="false" data-toggle="modal">Chat</a>
+                </li>
+                <li>
+                    <a th:if="${@userService.isAdminRole()}"><a th:href="@{/admin}"><i class="fa fa-user-o"></i>Admin panel</a></a>
                 </li>
             </ul>
         </div>
