@@ -56,33 +56,49 @@ public class UserServiceJpaImpl implements UserService {
     @Transactional
     public SystemUser findByNumberPhone(String numberPhone) {
         Users user = userRepository.findOneByNumberPhone(numberPhone);
-        return new SystemUser(user.getFirstUserName(), user.getLastUserName(), user.getNumberPhone(), user.getPassword(),
+        return (user == null) ? null : new SystemUser(user.getFirstUserName(), user.getLastUserName(), user.getNumberPhone(), user.getPassword(),
                 user.getEmail(), user.getGender(), user.getRoles());
     }
 
     @Override
     public SystemUser findUserByNumberPhone(String numberPhone) {
-        if(!existsUserByNumberPhone(numberPhone)) {
-              return null;
-        }
         Users user = userRepository.findOneByNumberPhone(numberPhone);
-        return new SystemUser(user);
+            return (user == null) ? null : new SystemUser(user);
     }
 
     @Override
     public UserInfo authUserInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if((userRepository.existsUserByNumberPhone(authentication.getName()))) {
             Users user = userRepository.findOneByNumberPhone(authentication.getName());
-            return new UserInfo(user.getId(), user.getFirstUserName(), user.getLastUserName(), user.getNumberPhone(),
-                    user.getEmail(), user.getGender(), user.getRoles());
+            if(user != null) {
+                return new UserInfo(user.getId(), user.getFirstUserName(), user.getLastUserName(), user.getNumberPhone(),
+                        user.getEmail(), user.getGender(), user.getRoles());
         }
         return new UserInfo();
     }
 
     @Override
-    public boolean existsUserByEmail(String email) {
-        return userRepository.existsUserByEmail(email);
+    public boolean isUserRegistered() {
+        return !SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser");
+    }
+
+    @Override
+    public boolean isAdminRole() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Users user = userRepository.findOneByNumberPhone(authentication.getName());
+        if(user != null) {
+            return user.getRoles().stream().map(Roles::getNameRole).anyMatch("ROLE_ADMIN"::equals) || user.getRoles().stream().map(Roles::getNameRole).anyMatch("ROLE_MANAGER"::equals);
+        }
+         return false;
+    }
+
+    public boolean isManagerRole() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Users user = userRepository.findOneByNumberPhone(authentication.getName());
+        if(user != null) {
+            return user.getRoles().stream().map(Roles::getNameRole).noneMatch("ROLE_ADMIN"::equals) && user.getRoles().stream().map(Roles::getNameRole).anyMatch("ROLE_MANAGER"::equals);
+        }
+        return false;
     }
 
     @Override
@@ -101,16 +117,14 @@ public class UserServiceJpaImpl implements UserService {
         user.setFirstUserName(systemUser.getFirstUserName());
         user.setLastUserName(systemUser.getLastUserName());
         user.setEmail(systemUser.getEmail());
-        if(systemUser.getGender() == null) {
+        if (systemUser.getGender() == null) {
             user.setGender(genderRepository.findOneByNameGender("Man"));
-        }
-        else {
+        } else {
             user.setGender(systemUser.getGender());
         }
-        if(systemUser.getRoles() == null) {
+        if (systemUser.getRoles() == null) {
             user.setRoles(new HashSet<>(Collections.singletonList(roleRepository.findOneByNameRole("ROLE_CLIENT"))));
-        }
-        else {
+        } else {
             user.setRoles(systemUser.getRoles());
         }
         userRepository.save(user);
@@ -134,14 +148,16 @@ public class UserServiceJpaImpl implements UserService {
     @Transactional
     public UserDetails loadUserByUsername(String numberPhones) throws UsernameNotFoundException {
         SystemUser user = findByNumberPhone(numberPhones);
-        if (user == null) {
-            throw new UsernameNotFoundException("Invalid username or password");
-        }
-        try{
+        try {
+            if (user == null) {
+                throw new UsernameNotFoundException("Invalid username");
+            }
             return new org.springframework.security.core.userdetails.User(user.getNumberPhone(), user.getPassword(),
                     mapRolesToAuthorities(user.getRoles()));
-        }
-        catch (Exception e) {
+        } catch (UsernameNotFoundException u) {
+            log.info(u.getMessage());
+            throw new UsernameNotFoundException("Invalid username");
+        } catch (Exception e) {
             log.error("Error user authorization!", e);
             throw new BadCredentialsException("Internal error. Try again latter.");
         }

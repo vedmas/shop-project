@@ -16,6 +16,7 @@ import ru.tokarev.shop.controller.repr.SignupForm;
 import ru.tokarev.shop.service.cart.CartService;
 import ru.tokarev.shop.service.product.ProductService;
 import ru.tokarev.shop.service.repr.ProductInfo;
+import ru.tokarev.shop.service.user.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -28,11 +29,15 @@ public class BasicController {
 
     private CartService cartService;
 
+    private UserService userService;
+
+
 
     @Autowired
-    public BasicController(ProductService productService, CartService cartService) {
+    public BasicController(ProductService productService, CartService cartService, UserService userService) {
         this.productService = productService;
         this.cartService = cartService;
+        this.userService = userService;
     }
 
     @GetMapping("/")
@@ -40,6 +45,8 @@ public class BasicController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("products", productService.findAll());
         model.addAttribute("productsTop", productService.findAll());
+        log.info("User registered {}", SecurityContextHolder.getContext().getAuthentication().getName());
+        log.info("User role {}", userService.isAdminRole());
         return "index";
     }
     @GetMapping("/login")
@@ -74,6 +81,11 @@ public class BasicController {
     @GetMapping("/cart")
     public String cartPage() {
         return "cart";
+    }
+
+    @GetMapping("/profile")
+    public String profilePage() {
+        return "profile";
     }
 
     @GetMapping("/checkoutAll")

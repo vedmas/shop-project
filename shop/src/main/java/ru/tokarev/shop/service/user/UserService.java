@@ -15,8 +15,6 @@ public interface UserService extends UserDetailsService {
 
     SystemUser findUserByNumberPhone(String numberPhone);
 
-    boolean existsUserByEmail(String email);
-
     boolean save(SystemUser systemUser);
 
     boolean existsUserByNumberPhone(String numberPhone);
@@ -24,6 +22,12 @@ public interface UserService extends UserDetailsService {
     void delete(Long id);
 
     UserInfo authUserInfo();
+
+    boolean isUserRegistered ();
+
+    boolean isAdminRole();
+
+    boolean isManagerRole();
 
     List<SystemUser> findAll();
 
