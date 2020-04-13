@@ -1,5 +1,6 @@
 package ru.tokarev.shop.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
+@Slf4j
 public class ProductAdminController {
 
     private ProductService productService;
@@ -54,12 +56,13 @@ public class ProductAdminController {
     }
 
     @PostMapping("/product")
-    public String saveProduct(Model model, ProductRepr productRepr, RedirectAttributes redirectAttributes) throws IOException {
+    public String saveProduct(Model model, ProductRepr productRepr, RedirectAttributes redirectAttributes) {
         model.addAttribute("activePage", "Products");
         try {
             productService.saveProduct(productRepr);
         } catch (Exception ex) {
             redirectAttributes.addFlashAttribute("error", true);
+            log.error("Error! The product {} could not be saved to the database.", productRepr.getNameProduct());
             if (productRepr.getId() == null) {
                 return "redirect:/admin/product/create";
             }

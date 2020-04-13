@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tokarev.shop.service.gender.GenderService;
 import ru.tokarev.shop.service.mailSender.MailSendService;
 import ru.tokarev.shop.service.repr.SystemUser;
