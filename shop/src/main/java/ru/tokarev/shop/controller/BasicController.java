@@ -59,7 +59,7 @@ public class BasicController {
         if (bindingResult.hasErrors()) {
             return "login";
         }
-        if(signupForm.getNumberPhone().length() < 5) {
+        if(signupForm.getNumberPhone().length() < 6) {
             model.addAttribute("error_numPhone", true);
             return "login";
         }
