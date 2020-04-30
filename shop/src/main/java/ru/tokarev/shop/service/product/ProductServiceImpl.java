@@ -1,8 +1,6 @@
 package ru.tokarev.shop.service.product;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +23,7 @@ public class ProductServiceImpl implements ProductService, Serializable {
 
     private static final long serialVersionUID = -5039352816560595361L;
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository) {
@@ -42,14 +40,14 @@ public class ProductServiceImpl implements ProductService, Serializable {
     @Override
     @Transactional
     public ProductRepr get(Long id) {
-        return new ProductRepr(productRepository.findById(id).get());
+        return new ProductRepr(productRepository.findById(id).orElse(new Products()));
     }
 
     @TrackTime
     @Override
     @Transactional
     public void saveProduct(ProductRepr productRepr) throws IOException {
-        Products product = (productRepr.getId() != null) ? productRepository.findById(productRepr.getId()).get()
+        Products product = (productRepr.getId() != null) ? findOneById(productRepr.getId())
                 : new Products();
         product.setNameProduct(productRepr.getNameProduct());
         product.setCategory(productRepr.getCategory());
@@ -77,11 +75,6 @@ public class ProductServiceImpl implements ProductService, Serializable {
     @Override
     public void delete(Products product) {
         productRepository.delete(product);
-    }
-
-    @Override
-    public Products findOneByNameProduct(String name) {
-        return null;
     }
 
     @Override

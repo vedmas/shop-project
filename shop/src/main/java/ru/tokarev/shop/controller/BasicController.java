@@ -25,11 +25,11 @@ import javax.validation.Valid;
 @Slf4j
 public class BasicController {
 
-    private ProductService productService;
+    private final ProductService productService;
 
-    private CartService cartService;
+    private final CartService cartService;
 
-    private UserService userService;
+    private final UserService userService;
 
 
 

@@ -10,11 +10,7 @@ public interface StatusPayService {
 
     StatusPay get(Integer id);
 
-    void saveStatusPay(StatusPay statusPay);
-
     void deleteById(Integer id);
-
-    void delete(StatusPay statusPay);
 
     StatusPay findOneByNameStatus(String nameStatus);
 }

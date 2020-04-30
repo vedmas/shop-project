@@ -1,8 +1,6 @@
 package ru.tokarev.shop.service.role;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.tokarev.shop.controller.repr.RoleRepr;
@@ -11,6 +9,7 @@ import ru.tokarev.shop.repository.entity.Roles;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 @Service("roleService")
 @Slf4j
@@ -32,7 +31,7 @@ public class RoleServiceImpl implements RoleService, Serializable {
 
     @Override
     public Roles get(Long id) {
-        return roleRepository.findById(id).get();
+        return roleRepository.findById(id).orElse(new Roles());
     }
 
     @Override

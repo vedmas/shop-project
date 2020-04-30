@@ -3,7 +3,6 @@ package ru.tokarev.shop.service.category;
 import ru.tokarev.shop.controller.repr.CategoryRepr;
 import ru.tokarev.shop.repository.entity.Category;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface CategoryService {
@@ -12,7 +11,7 @@ public interface CategoryService {
 
     Category get(Long id);
 
-    void saveCategory(CategoryRepr categoryRepr) throws IOException;
+    void saveCategory(CategoryRepr categoryRepr);
 
     void deleteById(Long id);
 

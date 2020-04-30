@@ -38,7 +38,7 @@ public class CheckoutUserHandler {
 
     private String pathEmailPage;
 
-    private UserService userService;
+    private final UserService userService;
 
     private OrderService orderService;
 

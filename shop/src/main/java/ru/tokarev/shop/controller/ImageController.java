@@ -14,7 +14,7 @@ import java.util.Optional;
 @Controller
 public class ImageController {
 
-    private PictureRepository pictureRepository;
+    private final PictureRepository pictureRepository;
 
     @Autowired
     public ImageController(PictureRepository pictureRepository) {

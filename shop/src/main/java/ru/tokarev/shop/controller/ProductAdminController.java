@@ -24,11 +24,11 @@ import java.util.List;
 @Slf4j
 public class ProductAdminController {
 
-    private ProductService productService;
+    private final ProductService productService;
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
-    private ProducerService producerService;
+    private final ProducerService producerService;
 
     @Autowired
     public ProductAdminController(ProductService productService, CategoryService categoryService, ProducerService producerService) {

@@ -1,7 +1,6 @@
 package ru.tokarev.shop.service.user;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
-import ru.tokarev.shop.repository.entity.Users;
 import ru.tokarev.shop.service.repr.SystemUser;
 import ru.tokarev.shop.service.repr.UserInfo;
 
@@ -15,7 +14,7 @@ public interface UserService extends UserDetailsService {
 
     SystemUser findUserByNumberPhone(String numberPhone);
 
-    boolean save(SystemUser systemUser);
+    void save(SystemUser systemUser);
 
     boolean existsUserByNumberPhone(String numberPhone);
 

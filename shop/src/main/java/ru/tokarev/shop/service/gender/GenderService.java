@@ -11,8 +11,6 @@ public interface GenderService {
 
     Gender get(int id);
 
-    void addGenders(Gender article);
-
     void deleteById(int id);
 
     void delete(Gender gender);

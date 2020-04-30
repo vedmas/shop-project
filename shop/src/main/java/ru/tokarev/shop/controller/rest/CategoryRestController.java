@@ -15,7 +15,7 @@ import java.util.List;
 @Slf4j
 public class CategoryRestController {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     @Autowired
     public CategoryRestController(CategoryService categoryService) {
@@ -41,7 +41,7 @@ public class CategoryRestController {
     }
 
     @PutMapping("/save")
-    public void saveCategory(@RequestBody CategoryRepr categoryRepr) throws IOException {
+    public void saveCategory(@RequestBody CategoryRepr categoryRepr) {
         log.info("categoryRepr id: {}, name: {}", categoryRepr.getId(), categoryRepr.getNameCategory());
         categoryService.saveCategory(categoryRepr);
 

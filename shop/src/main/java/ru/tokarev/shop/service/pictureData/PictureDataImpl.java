@@ -13,7 +13,7 @@ public class PictureDataImpl implements PictureDataService, Serializable {
 
     private static final long serialVersionUID = -1644041855617035847L;
 
-    PictureDataRepository pictureDataRepository;
+    private PictureDataRepository pictureDataRepository;
 
     @Autowired
     public void setPictureDataRepository(PictureDataRepository pictureDataRepository) {
@@ -21,27 +21,7 @@ public class PictureDataImpl implements PictureDataService, Serializable {
     }
 
     @Override
-    public List<PictureData> findAll() {
-        return null;
-    }
-
-    @Override
-    public PictureData get(Long id) {
-        return null;
-    }
-
-    @Override
     public void savePicture(PictureData pictureData) {
         pictureDataRepository.save(pictureData);
-    }
-
-    @Override
-    public void deleteById(Long id) {
-
-    }
-
-    @Override
-    public void delete(PictureData pictureData) {
-
     }
 }

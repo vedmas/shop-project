@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/admin")
 public class CategoryAdminController {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     @Autowired
     public CategoryAdminController(CategoryService categoryService) {

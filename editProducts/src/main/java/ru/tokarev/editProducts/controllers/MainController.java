@@ -15,13 +15,11 @@ import ru.tokarev.editProducts.service.repr.CategoryInfo;
 @Slf4j
 public class MainController {
 
-    private RestTemplate restTemplate;
-    private CategoryServiceRest categoryServiceRest;
+    private final CategoryServiceRest categoryServiceRest;
 
 
     @Autowired
-    public MainController(RestTemplate restTemplate, CategoryServiceRest categoryServiceRest) {
-        this.restTemplate = restTemplate;
+    public MainController(CategoryServiceRest categoryServiceRest) {
         this.categoryServiceRest = categoryServiceRest;
     }
 
