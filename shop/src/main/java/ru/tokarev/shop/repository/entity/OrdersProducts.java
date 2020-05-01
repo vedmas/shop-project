@@ -17,7 +17,7 @@ public class OrdersProducts implements Serializable {
     private OrdersProductsKey id;
 
     @ManyToOne
-    @MapsId("orders_id")
+    @MapsId(value = "orders_id")
     @JoinColumn(name = "orders_id")
     private Orders orders;
 

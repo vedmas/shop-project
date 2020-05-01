@@ -6,7 +6,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 import ru.tokarev.shop.aspect.TrackTime;
-import ru.tokarev.shop.repository.entity.Gender;
 import ru.tokarev.shop.service.product.ProductService;
 import ru.tokarev.shop.service.repr.ProductInfo;
 
@@ -39,11 +38,6 @@ public class CartServiceImpl implements CartService, Serializable {
     @Override
     public List<ProductInfo> findAll() {
         return Collections.unmodifiableList(cartProducts) ;
-    }
-
-    @Override
-    public Gender getOneEntity(ProductInfo productInfo) {
-        return null;
     }
 
     @TrackTime

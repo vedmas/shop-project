@@ -2,7 +2,6 @@ package ru.tokarev.shop.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +28,6 @@ public class BasicController {
 
     private final UserService userService;
 
-
-
     @Autowired
     public BasicController(ProductService productService, CartService cartService, UserService userService) {
         this.productService = productService;
@@ -39,16 +36,16 @@ public class BasicController {
     }
 
     @GetMapping("/")
-    public String indexPage(Model model, HttpServletRequest httpServletRequest) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    public String indexPage(Model model) {
         model.addAttribute("products", productService.findAll());
         model.addAttribute("productsTop", productService.findAll());
         log.info("User registered {}", SecurityContextHolder.getContext().getAuthentication().getName());
         log.info("User role {}", userService.isAdminRole());
         return "index";
     }
+
     @GetMapping("/login")
-    String loginPage(SignupForm signupForm, Model model) {
+    String loginPage(SignupForm signupForm) {
         return "login";
     }
 
