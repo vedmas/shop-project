@@ -7,7 +7,6 @@ import ru.tokarev.shop.controller.repr.CategoryRepr;
 import ru.tokarev.shop.repository.entity.Category;
 import ru.tokarev.shop.service.category.CategoryService;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController

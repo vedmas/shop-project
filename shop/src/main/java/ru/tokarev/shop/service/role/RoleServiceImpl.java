@@ -9,7 +9,6 @@ import ru.tokarev.shop.repository.entity.Roles;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Optional;
 
 @Service("roleService")
 @Slf4j

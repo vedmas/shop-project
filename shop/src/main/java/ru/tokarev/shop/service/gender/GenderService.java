@@ -1,7 +1,6 @@
 package ru.tokarev.shop.service.gender;
 
 import ru.tokarev.shop.repository.entity.Gender;
-import ru.tokarev.shop.repository.entity.Roles;
 
 import java.util.List;
 

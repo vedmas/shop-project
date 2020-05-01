@@ -2,7 +2,6 @@ package ru.tokarev.shop.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.tokarev.shop.controller.repr.ProductRepr;
 import ru.tokarev.shop.repository.entity.Products;

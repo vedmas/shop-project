@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.tokarev.shop.controller.repr.ProductRepr;
-import ru.tokarev.shop.repository.CategoryRepository;
 import ru.tokarev.shop.repository.entity.Products;
 import ru.tokarev.shop.service.category.CategoryService;
 import ru.tokarev.shop.service.producer.ProducerService;
 import ru.tokarev.shop.service.product.ProductService;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller

@@ -6,7 +6,6 @@ import ru.tokarev.shop.repository.PictureDataRepository;
 import ru.tokarev.shop.repository.entity.PictureData;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Service
 public class PictureDataImpl implements PictureDataService, Serializable {

@@ -30,7 +30,7 @@ public class ProducerServiceImpl implements ProducerService, Serializable {
 
     @Override
     public Producers get(Long id) {
-        return producerRepository.findById(id).get();
+        return producerRepository.findById(id).orElse(new Producers());
     }
 
     @Override
