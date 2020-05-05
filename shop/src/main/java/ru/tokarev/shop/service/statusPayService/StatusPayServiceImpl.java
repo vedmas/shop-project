@@ -27,21 +27,12 @@ public class StatusPayServiceImpl implements StatusPayService, Serializable {
 
     @Override
     public StatusPay get(Integer id) {
-        return statusPayRepository.findById(id).get();
-    }
-
-    @Override
-    public void saveStatusPay(StatusPay statusPay) {
+        return statusPayRepository.findById(id).orElse(new StatusPay());
     }
 
     @Override
     public void deleteById(Integer id) {
         statusPayRepository.deleteById(id);
-    }
-
-    @Override
-    public void delete(StatusPay statusPay) {
-
     }
 
     @Override

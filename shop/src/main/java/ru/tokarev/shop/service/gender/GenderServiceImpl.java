@@ -27,12 +27,7 @@ public class GenderServiceImpl implements GenderService, Serializable {
 
     @Override
     public Gender get(int id) {
-        return genderRepository.findById(id).get();
-    }
-
-    @Override
-    public void addGenders(Gender article) {
-
+        return genderRepository.findById(id).orElse(new Gender());
     }
 
     @Override

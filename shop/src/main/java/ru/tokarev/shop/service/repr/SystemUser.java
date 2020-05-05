@@ -42,7 +42,6 @@ public class SystemUser implements Serializable {
         this.numberPhone = numberPhone;
         this.password = password;
         this.email = email;
-
     }
 
     public SystemUser(Users user) {

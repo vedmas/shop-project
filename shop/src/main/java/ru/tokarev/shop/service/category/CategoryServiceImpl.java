@@ -28,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService, Serializable {
 
     @Override
     public Category get(Long id) {
-        return categoryRepository.findById(id).get();
+        return categoryRepository.findById(id).orElse(new Category());
     }
 
     @Override

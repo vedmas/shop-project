@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService, Serializable {
 
     @Override
     public Orders get(Long id) {
-        return orderRepository.findById(id).get();
+        return orderRepository.findById(id).orElse(new Orders());
     }
 
     @Override

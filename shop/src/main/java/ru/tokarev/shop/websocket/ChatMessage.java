@@ -1,11 +1,5 @@
 package ru.tokarev.shop.websocket;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-
-
 public class ChatMessage {
 
     private String username;

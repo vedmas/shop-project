@@ -15,8 +15,8 @@ import ru.tokarev.shop.service.repr.ProductInfo;
 @RequestMapping("/product")
 public class MainProductController {
 
-    private ProductService productService;
-    private CartService cartService;
+    private final ProductService productService;
+    private final CartService cartService;
 
     @Autowired
     public MainProductController(ProductService productService, CartService cartService) {

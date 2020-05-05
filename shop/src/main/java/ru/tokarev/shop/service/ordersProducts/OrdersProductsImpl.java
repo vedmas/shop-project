@@ -6,7 +6,6 @@ import ru.tokarev.shop.repository.OrdersProductsRepository;
 import ru.tokarev.shop.repository.entity.Orders;
 import ru.tokarev.shop.repository.entity.OrdersProducts;
 import ru.tokarev.shop.repository.entity.OrdersProductsKey;
-import ru.tokarev.shop.repository.entity.Products;
 import ru.tokarev.shop.service.product.ProductService;
 import ru.tokarev.shop.service.repr.ProductInfo;
 
@@ -18,8 +17,8 @@ public class OrdersProductsImpl implements OrdersProductsService, Serializable {
 
     private static final long serialVersionUID = 5979223291972868248L;
 
-    private OrdersProductsRepository ordersProductsRepository;
-    private ProductService productService;
+    private final OrdersProductsRepository ordersProductsRepository;
+    private final ProductService productService;
 
     @Autowired
     public OrdersProductsImpl(OrdersProductsRepository ordersProductsRepository, ProductService productService) {
@@ -33,28 +32,13 @@ public class OrdersProductsImpl implements OrdersProductsService, Serializable {
     }
 
     @Override
-    public OrdersProducts get(OrdersProductsKey id) {
-        return null;
-    }
-
-    @Override
-    public OrdersProducts saveOrderProduct(Orders orders, ProductInfo productInfo) {
+    public void saveOrderProduct(Orders orders, ProductInfo productInfo) {
         OrdersProducts ordersProducts = new OrdersProducts();
         OrdersProductsKey ordersProductsKey = new OrdersProductsKey(orders.getId(), productInfo.getProductRepr().getId());
         ordersProducts.setOrders(orders);
         ordersProducts.setProducts(productService.findOneById(productInfo.getProductRepr().getId()));
         ordersProducts.setQuantity((productInfo.getCount()));
         ordersProducts.setId(ordersProductsKey);
-        return ordersProductsRepository.save(ordersProducts);
-    }
-
-    @Override
-    public void deleteById(OrdersProductsKey id) {
-
-    }
-
-    @Override
-    public void delete(OrdersProducts ordersProducts) {
-
+        ordersProductsRepository.save(ordersProducts);
     }
 }

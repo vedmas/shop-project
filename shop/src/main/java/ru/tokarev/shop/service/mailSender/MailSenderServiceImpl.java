@@ -13,15 +13,13 @@ import ru.tokarev.shop.service.repr.MailInfo;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
 
 @Service
 @Slf4j
 public class MailSenderServiceImpl implements MailSendService {
 
-    private JavaMailSender mailSender;
-
-    private SpringTemplateEngine templateEngine;
+    private final JavaMailSender mailSender;
+    private final SpringTemplateEngine templateEngine;
 
     public MailSenderServiceImpl(JavaMailSender mailSender, SpringTemplateEngine templateEngine) {
         this.mailSender = mailSender;

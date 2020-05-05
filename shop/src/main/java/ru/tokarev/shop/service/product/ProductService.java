@@ -18,7 +18,5 @@ public interface ProductService {
 
     void delete(Products product);
 
-    Products findOneByNameProduct(String name);
-
     Products findOneById(Long id);
 }

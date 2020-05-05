@@ -1,6 +1,5 @@
 package ru.tokarev.shop;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,6 @@ import ru.tokarev.shop.service.cart.CartService;
 import ru.tokarev.shop.service.repr.ProductInfo;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

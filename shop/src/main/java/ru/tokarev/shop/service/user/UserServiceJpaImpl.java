@@ -1,8 +1,6 @@
 package ru.tokarev.shop.service.user;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
@@ -29,9 +27,9 @@ import java.util.stream.Collectors;
 @Slf4j
 public class UserServiceJpaImpl implements UserService {
 
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private BCryptPasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
     private GenderRepository genderRepository;
 
     @Autowired
@@ -49,7 +47,7 @@ public class UserServiceJpaImpl implements UserService {
     @Override
     @Transactional
     public SystemUser findById(Long id) {
-        return new SystemUser(userRepository.findById(id).get());
+        return new SystemUser(userRepository.findById(id).orElse(new Users()));
     }
 
     @Override
@@ -108,7 +106,7 @@ public class UserServiceJpaImpl implements UserService {
 
     @Override
     @Transactional
-    public boolean save(SystemUser systemUser) {
+    public void save(SystemUser systemUser) {
         Users user = systemUser.getId() != null ? userRepository.findById(systemUser.getId()).orElse(new Users()) : new Users();
         user.setNumberPhone(systemUser.getNumberPhone());
         if (systemUser.getId() == null || (systemUser.getPassword() != null && !systemUser.getPassword().trim().isEmpty())) {
@@ -128,7 +126,6 @@ public class UserServiceJpaImpl implements UserService {
             user.setRoles(systemUser.getRoles());
         }
         userRepository.save(user);
-        return true;
     }
 
     @Override
@@ -166,6 +163,4 @@ public class UserServiceJpaImpl implements UserService {
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Roles> roles) {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNameRole())).collect(Collectors.toList());
     }
-
-
 }

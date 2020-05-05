@@ -6,7 +6,7 @@
 3. Вход на главную стираницу сайта localhost:8080
 4. Логин/пароль администратора на сайте 000000/admin
 5. Для полноценной проверки функционеальности необходимо создать один или несколько продуктов в admin panel. Походящие картинки для продуктов в product images
-6. *Для работы модуля через eureka сервер необходимо снять коментарий с зависимости spring-cloud-starter-netflix-eureka-client в pom.xml модуля
+6. *Для работы модуля через eureka сервер, необходимо закоментировать @EnableDiscoveryClient(autoRegister = false) в классе ShopApplication.
 
 **Модуль shop-eureka**
 1. Является eureka сервером для обмена запросасми между shop и editProducts

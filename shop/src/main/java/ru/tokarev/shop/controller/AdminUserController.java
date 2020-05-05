@@ -23,11 +23,11 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminUserController {
 
-    private UserService userService;
+    private final UserService userService;
 
-    private RoleService roleService;
+    private final RoleService roleService;
 
-    private GenderService genderService;
+    private final GenderService genderService;
 
     @Autowired
     public AdminUserController(UserService userService, RoleService roleService, GenderService genderService) {
