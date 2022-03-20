@@ -17,7 +17,7 @@ public class AppAspects implements Serializable {
 
     private static final long serialVersionUID = 5058967780626163061L;
 
-    // https://docs.spring.io/spring/docs/4.0.x/spring-framework-reference/html/aop.html
+    //https://docs.spring.io/spring/docs/4.0.x/spring-framework-reference/html/aop.html
     @Before("execution(* ru.tokarev.shop.controller.*.*(..))")
     public void before(JoinPoint joinPoint){
         log.info("Call of {}", joinPoint);
